@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:44:03 by fdille            #+#    #+#             */
-/*   Updated: 2017/02/12 17:42:40 by niragne          ###   ########.fr       */
+/*   Updated: 2017/02/12 19:19:59 by fdille           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,45 +31,6 @@ t_usi		*create_map(int size)
 	}
 	ret[i] = 0xffff;
 	return (ret);
-}
-
-int			fillit(t_usi *tetris, t_usi *map, int size)
-{
-	int j;
-	int k;
-
-	j = 0;
-	if (!*tetris)
-		return (1);
-	while (j < size)
-	{
-		k = 0;
-		while (k < size)
-		{
-			if (!(((*tetris & 0xf000)) >> k & map[j]) &&
-				!(((*tetris & 0x0f00) << 4) >> k & map[j + 1]) &&
-				!(((*tetris & 0x00f0) << 8) >> k & map[j + 2]) &&
-				!(((*tetris & 0x000f) << 12) >> k & map[j + 3]))
-			{
-				map[j] |= ((*tetris & 0xf000)) >> k;
-				map[j + 1] |= ((*tetris & 0x0f00) << 4) >> k;
-				map[j + 2] |= ((*tetris & 0x00f0) << 8) >> k;
-				map[j + 3] |= ((*tetris & 0x000f) << 12) >> k;
-				if (fillit(tetris + 1, map, size))
-				{
-					*tetris = ((j << 8) + k);
-					return (1);
-				}
-				map[j] ^= ((*tetris & 0xf000)) >> k;
-				map[j + 1] ^= ((*tetris & 0x0f00) << 4) >> k;
-				map[j + 2] ^= ((*tetris & 0x00f0) << 8) >> k;
-				map[j + 3] ^= ((*tetris & 0x000f) << 12) >> k;
-			}
-			k++;
-		}
-		j++;
-	}
-	return (0);
 }
 
 int			puterr(char *str)

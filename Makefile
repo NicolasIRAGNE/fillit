@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/03 15:05:20 by niragne           #+#    #+#              #
-#    Updated: 2017/02/12 17:55:59 by niragne          ###   ########.fr        #
+#    Updated: 2017/02/12 19:19:25 by fdille           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC = 	ft_checkfile.c \
 		ft_read.c \
 		tetris.c \
 		putsol.c \
-		main.c
+		main.c \
+		fillit.c
 
 LIB = libft/libft.a
 GREEN= \033[0;32m
